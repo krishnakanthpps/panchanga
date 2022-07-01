@@ -1440,4 +1440,4 @@ def navamsa(jd, place):
 
 
 
-app.run()
+#app.run()
