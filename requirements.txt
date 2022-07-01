@@ -9,4 +9,4 @@ werkzeug>=0.15.3
 gunicorn==19.9.0
 flask-cors
 numpy==1.23.0
-pandas==0.25.3
+pandas==1.4.3
