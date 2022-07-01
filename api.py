@@ -456,7 +456,7 @@ def pancha(date, loc_lat, loc_lng, time, tz):
         yoga_time = str(yoga_time)
         if '1 day' in yoga_time:
             yoga_time = yoga_time.replace('1 day', 'Next day')
-            Yoga = "{0} , Till {1}".format(yogam,yoga_time)
+        Yogam = "{0} , Till {1}".format(yogam,yoga_time)
 
 
         #Masa Calcuation
@@ -583,7 +583,7 @@ def pancha(date, loc_lat, loc_lng, time, tz):
             'Gulika Kalam': gulika_kalam,
             'Durmuhurtam': durmu_today,
 #            'Cu_Naks': CuNaks,
-            'Yoga':Yoga,
+            'Yoga':Yogam,
 #            'Lagna' : Lagna,
 #            'Sun' : Sun,
 #            'Moon': Moon,
