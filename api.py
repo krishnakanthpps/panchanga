@@ -155,8 +155,8 @@ def pancha(date, loc_lat, loc_lng, time, tz):
     #    mn = int(tb[1])
     d_1 = date - timedelta(days=1)
     d1 = date + timedelta(days=1)
-    print("****d1****")
-    print(d1)
+    #print("****d1****")
+    #print(d1)
 
     # Julian Day number as on (year, month, day) at 00:00 UTC
     gregorian_to_jd_detail = lambda date: swe.julday(date.year, date.month, date.day, date.hour)
@@ -166,11 +166,11 @@ def pancha(date, loc_lat, loc_lng, time, tz):
     date_detail = gregorian_to_jd_detail(datetime(date.year, date.month, date.day, date.hour, date.minute))
 
     date = gregorian_to_jd(datetime(date.year, date.month, date.day))
-    print(date)
+    #print(date)
     d1 =  gregorian_to_jd(datetime(d1.year, d1.month, d1.day))
-    print(d1)
+   # print(d1)
     d_1 =  gregorian_to_jd(datetime(d_1.year, d_1.month, d_1.day))
-    print(d_1)
+    #print(d_1)
 #    date = td.to_julian_date()
 #    print("Julian date")
 #    print(date)
@@ -191,8 +191,8 @@ def pancha(date, loc_lat, loc_lng, time, tz):
     #        return jsonify({'Error':'City Not found'})
     lat = float(loc_lat)
     lon = float(loc_lng)
-    print(lat)
-    print(lon)
+#    print(lat)
+#    print(lon)
 
     #lat = float(cities[loc]["latitude"])
     #lon = float(cities[loc]["longitude"])
@@ -375,7 +375,7 @@ def pancha(date, loc_lat, loc_lng, time, tz):
         ddaat = str(ddate[0])+"-"+str(ddate[1])+"-"+str(ddate[2])
         date_str =  datetime.strptime(ddaat, '%Y-%m-%d')
 #        print (date_str)
-        print(star_time1)
+#        print(star_time1)
 #        print(type(date_str))
 #        print(type(star_time1))
         new_time = date_str + star_time1
@@ -405,8 +405,8 @@ def pancha(date, loc_lat, loc_lng, time, tz):
         # print(NaksVal)
         # print(star )
         star_time1 = timedelta(hours=Ne_Nakshatra[1][0],minutes=Ne_Nakshatra[1][1], seconds=Ne_Nakshatra[1][2])
-        print("next star time")
-        print(star_time1)
+#        print("next star time")
+#        print(star_time1)
         star_time = str(star_time1)
 
     if '1 day' in star_time:
@@ -420,8 +420,8 @@ def pancha(date, loc_lat, loc_lng, time, tz):
         # print(NaksVal)
         # print(star )
         star_time1 = timedelta(hours=Pr_Nakshatra[1][0],minutes=Pr_Nakshatra[1][1], seconds=Pr_Nakshatra[1][2])
-        print("next star time")
-        print(star_time1)
+ #       print("next star time")
+ #       print(star_time1)
         star_time = str(star_time1)
 
     if '1 day' in star_time:
