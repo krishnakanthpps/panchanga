@@ -583,7 +583,7 @@ def pancha(date, loc_lat, loc_lng, time, tz):
             'Gulika Kalam': gulika_kalam,
             'Durmuhurtam': durmu_today,
 #            'Cu_Naks': CuNaks,
-            'Yoga':Yogaa,
+            'Yoga':Yoga,
 #            'Lagna' : Lagna,
 #            'Sun' : Sun,
 #            'Moon': Moon,
