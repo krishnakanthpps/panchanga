@@ -28,7 +28,8 @@ from flask_cors import CORS
 import pandas as pd
 
 app = flask.Flask(__name__)
-#app.config["DEBUG"] = True
+#app.run()
+app.debug = True
 
 
 star_list = ["Ashwini","Bharani","Krittika","Rohini","Mrigashirsha","Ardra","Punarvasu","Pushya","Ashlesha","Magha","Purva Phalguni","Uttara Phalguni","Hasta","Chitra","Svati","Visakha","Anuradha","Jyeshtha","Mula","Purva ashadha","Uttara ashada","Sravana","Dhanistha","Shatabhisha","Purva Bhadrapada","Uttara Bhadrapada","Revati"]
@@ -90,7 +91,7 @@ def api_all():
     time=request.args.get('time')
     tz=request.args.get('tz')
     val = pancha(date, loc_lat, loc_lng, time, tz)
-#    print(val)
+#    #print(val)
 
 
     if date==None or loc_lat == None or loc_lng == None or tz == None:
@@ -107,7 +108,7 @@ def pakshi():
     time=request.args.get('time')
     tz=request.args.get('tz')
     val = pancha(date, loc_lat, loc_lng, time, tz)
-#    print(val)
+#    #print(val)
 
 
 #    if date==null or loc_lat == null or loc_lng == null or time == null:
@@ -117,36 +118,36 @@ def pakshi():
 
 
 def pancha(date, loc_lat, loc_lng, time, tz):
-    print(date)
-    print(type(date))
+    #print(date)
+    #print(type(date))
 #    date = datetime.strptime(str(date), '%Y-%m-%d')
-#    print(date)
-#    print(type(date))
+#    #print(date)
+#    #print(type(date))
 #    jd2 = date.to_julian_date()
-#    print(jd2)
+#    #print(jd2)
 #    ts = pd.Timestamp(year = 2021,  month = 10, day = 17, hour = 20, minute = 57, second = 49, tz = 'Asia/Kolkata')
     td = pd.Timestamp.now()
-    print(td)
-# Print the Timestamp object
-#    print(ts)
-#    print(ts.to_julian_date())
-#    print(td)
-    print(td.to_julian_date())
+    #print(td)
+# #print the Timestamp object
+#    #print(ts)
+#    #print(ts.to_julian_date())
+#    #print(td)
+    #print(td.to_julian_date())
 #    jd = td.to_julian_date()
 #    date = pd.Timestamp.now() #'2021-10-19 11:54:00'
 #    now = datetime.now()
 
 #    date = '2021-11-2  13:30:00'
 #    date = now.strftime("%Y-%m-%d %H:%M:%S")
-#    print(date)
+#    #print(date)
 
     #date = datetime.strptime(str(date), '%Y-%m-%d %H:%M:%S')
 
     try:
         date = datetime.strptime(date,'%Y-%m-%d')
-    #        print(date)
+    #        #print(date)
     #        date = date.datet()
-    #        print(date)
+    #        #print(date)
     except IndexError:
         date = datetime.now()
 
@@ -168,21 +169,21 @@ def pancha(date, loc_lat, loc_lng, time, tz):
     date = gregorian_to_jd(datetime(date.year, date.month, date.day))
     #print(date)
     d1 =  gregorian_to_jd(datetime(d1.year, d1.month, d1.day))
-   # print(d1)
+    #print(d1)
     d_1 =  gregorian_to_jd(datetime(d_1.year, d_1.month, d_1.day))
     #print(d_1)
 #    date = td.to_julian_date()
-#    print("Julian date")
-#    print(date)
-#    print(date)
+#    #print("Julian date")
+#    #print(date)
+#    #print(date)
         #date = gregorian_to_jd(Date(2019, 4, 11))
 
     ##data = {
     #    'Given Location':loc,
     #    'Given Date':date
     #}
-        #print loc
-        #print date
+        ##print loc
+        ##print date
 
     #with open("newcities.json") as fp:
     #    cities = json.load(fp)
@@ -191,8 +192,8 @@ def pancha(date, loc_lat, loc_lng, time, tz):
     #        return jsonify({'Error':'City Not found'})
     lat = float(loc_lat)
     lon = float(loc_lng)
-#    print(lat)
-#    print(lon)
+    #print(lat)
+    #print(lon)
 
     #lat = float(cities[loc]["latitude"])
     #lon = float(cities[loc]["longitude"])
@@ -201,7 +202,7 @@ def pancha(date, loc_lat, loc_lng, time, tz):
 #    lon = 78.45636
 #    tz = 'Asia/Kolkata'
 
-    #print(tz)
+    ##print(tz)
     #timez = pytz.timezone(tz)
 
     #dt = datetime.utcnow()
@@ -232,19 +233,19 @@ def pancha(date, loc_lat, loc_lng, time, tz):
 
 
     dt = datetime.now()
-    #print (dt)
+    ##print (dt)
     tz_now = pytz.timezone(tz)
-    print(tz_now)
+    #print(tz_now)
     tz = tz_now.utcoffset(dt).total_seconds()/60/60
-    print(tz)
+    #print(tz)
     location = Place(lat, lon, tz)
-#    print(location)
+#    #print(location)
     Vaara = vaara(date)
     Masa = masa(date, location)
 #    Samvat
 ###### Nakshatra - Details
-    Pr_Nakshatra = nakshatra(d_1,location)
-    Su_Nakshatra = nakshatra(date,location)
+#    Pr_Nakshatra = nakshatra(d_1,location)
+#    Su_Nakshatra = nakshatra(date,location)
     Ne_Nakshatra = nakshatra(d1,location)
     Cu_Nakshatra = nakshatra(date,location)
 #    Yogi_Nakshatra = nakshatra(date_detail,location)
@@ -269,7 +270,7 @@ def pancha(date, loc_lat, loc_lng, time, tz):
 
     SRA = sunrise(date, location)[1]
     SRAN = sunrise(d1, location)[1]
-    print(SRA)
+    #print(SRA)
     #SR1 = sunrise(date, location)[0]
     #SRO = timedelta(hours=SRA[0],minutes=SRA[1],seconds=SRA[2])
     SR = "{0}:{1}:{2}".format(SRA[0],SRA[1],SRA[2])
@@ -293,7 +294,7 @@ def pancha(date, loc_lat, loc_lng, time, tz):
     Moon = moon_position(date,location)
     Hora = hora(date, location)
     
-    ## print(dt)
+    ## #print(dt)
     #Rashi = raasi(date)
     planet_pos = planetary_positions(date,location)
 #    lunar_phase = lunar_phase(date)
@@ -316,8 +317,8 @@ def pancha(date, loc_lat, loc_lng, time, tz):
     #Tithi Conversion
     Tithi1 = tithi_list[Tithi[0]-1]
     tithiVal = tithi_list.index(Tithi1)
-    # print(tithiVal)
-    # print(Tithi1)
+    # #print(tithiVal)
+    # #print(Tithi1)
     Tithi1_time = timedelta(hours=Tithi[1][0],minutes=Tithi[1][1], seconds=Tithi[1][2])
     Tithi1_time = str(Tithi1_time)
     if '1 day' in Tithi1_time:
@@ -327,8 +328,8 @@ def pancha(date, loc_lat, loc_lng, time, tz):
     if len(Tithi)>2:
         Tithi2 = tithi_list[Tithi[2]-1]
         tithiVal = tithi_list.index(Tithi2)
-        # print(tithiVal)
-        # print(Tithi2 )
+        # #print(tithiVal)
+        # #print(Tithi2 )
         Tithi2_time = Tithi[3]
         Tithi2_time = timedelta(hours=Tithi[3][0],minutes=Tithi[3][1], seconds=Tithi[3][2])
         Tithi2_time = str(Tithi2_time)
@@ -339,110 +340,114 @@ def pancha(date, loc_lat, loc_lng, time, tz):
         # Rashi Calculation
     #    if Rashi:
     #        rashival = rashi_list.index[Rashi]
-    #        # print(rashival)
-    #        # print(Rashi)
+    #        # #print(rashival)
+    #        # #print(Rashi)
 
         #Nakshatra Calcuation
 #    if Nakshatra:
 #        star = star_list[Nakshatra[0]-1]
 #        NaksVal = star_list.index(star)
-#        # print(NaksVal)
-#        # print(star )
+#        # #print(NaksVal)
+#        # #print(star )
 #        star_time1 = timedelta(hours=Nakshatra[1][0],minutes=Nakshatra[1][1], seconds=Nakshatra[1][2])
 #        star_time = str(star_time1)
 
 #    if '1 day' in star_time:
 #        star_time = star_time.replace('1 day', 'Next day')
-#    ## print("Nakshatra :{0} , Till {1}".format(star,star_time))
+#    ## #print("Nakshatra :{0} , Till {1}".format(star,star_time))
 #    Nakshatram = "{0} , Till {1}".format(star,star_time)
 
     if Cu_Nakshatra:
         star = star_list[Cu_Nakshatra[0]-1]
         NaksVal = star_list.index(star)
-#        print(NaksVal)
-#        print(star )
-#        print(Cu_Nakshatra[0])
-#        print(Cu_Nakshatra[1])
         star_time1 = timedelta(hours=Cu_Nakshatra[1][0],minutes=Cu_Nakshatra[1][1], seconds=Cu_Nakshatra[1][2])
-#        print("star time")
-#        print(star_time1)
         star_time = str(star_time1)
-#        print(date)
         ddate = jd_to_gregorian(date)
-#        yrs = str(ddate[0])
-#        mnths = str(ddate[1])
-#        dys = str(ddate[2])
         ddaat = str(ddate[0])+"-"+str(ddate[1])+"-"+str(ddate[2])
         date_str =  datetime.strptime(ddaat, '%Y-%m-%d')
-#        print (date_str)
-#        print(star_time1)
-#        print(type(date_str))
-#        print(type(star_time1))
+        #print(star_time1)
         new_time = date_str + star_time1
-#        valhours = star_time1.hours
-#        print(valhours)
-#        print(new_time)
         val = new_time.strftime("%m/%d/%Y %H:%M:%S")
-#        print(val)
         dtobj = datetime.strptime(val, '%m/%d/%Y %H:%M:%S')
-#        dtobj = datetime.fromisoformat(val)
-#        print(dtobj)
         val_detail = gregorian_to_jd_detail(datetime(dtobj.year, dtobj.month, dtobj.day, dtobj.hour, dtobj.minute, dtobj.second))       
         print(val_detail)
 
     if '1 day' in star_time: 
         star_time = star_time.replace('1 day', 'Next day')
-    ## print("Nakshatra :{0} , Till {1}".format(star,star_time))
-#    Cu_Nakshatram = "{0} , Till {1}, {2}".format(star,star_time,val_detail)
+        print("Nakshatra :{0} , Till {1}".format(star,star_time))
+
+    Cu_Nakshatram = "{0} , Till {1}, {2}".format(star,star_time,val_detail)
 #    Cu_Nakshatram = "{0} : {1}".format(star,val_detail)
-    Cu_Nakshatram = "{0} , till {1}".format(star,star_time)
-#    print(Cu_Nakshatram)
-#    print(type(Cu_Nakshatram))
+#    Cu_Nakshatram = "{0} , till {1}".format(star,star_time)
+    nakstra = "{0}".format(star)
+    Till_Val = "{0}".format(star_time)
+    Till_JD = "{0}".format(val_detail)
+    naksdata = {'nakstra' : nakstra, 'Till_Val': Till_Val, 'Till_JD': Till_JD}
+    Cu_Nakshatram = naksdata
+    print(Cu_Nakshatram)
+    print(type(Cu_Nakshatram))
+
 
     if Ne_Nakshatra:
         star = star_list[Ne_Nakshatra[0]-1]
         NaksVal = star_list.index(star)
-        # print(NaksVal)
-        # print(star )
         star_time1 = timedelta(hours=Ne_Nakshatra[1][0],minutes=Ne_Nakshatra[1][1], seconds=Ne_Nakshatra[1][2])
-#        print("next star time")
-#        print(star_time1)
         star_time = str(star_time1)
+        ddate = jd_to_gregorian(date)
+        ddaat = str(ddate[0])+"-"+str(ddate[1])+"-"+str(ddate[2])
+        date_str =  datetime.strptime(ddaat, '%Y-%m-%d')
+        #print(star_time1)
+        new_time = date_str + star_time1
+        val = new_time.strftime("%m/%d/%Y %H:%M:%S")
+        dtobj = datetime.strptime(val, '%m/%d/%Y %H:%M:%S')
+        val_detail = gregorian_to_jd_detail(datetime(dtobj.year, dtobj.month, dtobj.day, dtobj.hour, dtobj.minute, dtobj.second))       
+        print(val_detail)
 
-    if '1 day' in star_time:
+    if '1 day' in star_time: 
         star_time = star_time.replace('1 day', 'Next day')
-    ## print("Nakshatra :{0} , Till {1}".format(star,star_time))
-    Ne_Nakshatram = "{0} , till {1}".format(star,star_time)
+        print("Nakshatra :{0} , Till {1}".format(star,star_time))
 
-    if Pr_Nakshatra:
-        star = star_list[Pr_Nakshatra[0]-1]
-        NaksVal = star_list.index(star)
-        # print(NaksVal)
-        # print(star )
-        star_time1 = timedelta(hours=Pr_Nakshatra[1][0],minutes=Pr_Nakshatra[1][1], seconds=Pr_Nakshatra[1][2])
- #       print("next star time")
- #       print(star_time1)
-        star_time = str(star_time1)
+    Ne_Nakshatram = "{0} , Till {1}, {2}".format(star,star_time,val_detail)
+#    Ne_Nakshatram = "{0} : {1}".format(star,val_detail)
+#    Ne_Nakshatram = "{0} , till {1}".format(star,star_time)
+    nakstra = "{0}".format(star)
+    Till_Val = "{0}".format(star_time)
+    Till_JD = "{0}".format(val_detail)
+    naksdata = {'nakstra' : nakstra, 'Till_Val': Till_Val, 'Till_JD': Till_JD}
+    Ne_Nakshatram = naksdata
+    print(Ne_Nakshatram)
+    print(type(Ne_Nakshatram))
 
-    if '1 day' in star_time:
-        star_time = star_time.replace('1 day', 'Next day')
-    ## print("Nakshatra :{0} , Till {1}".format(star,star_time))
-    Pr_Nakshatram = "{0} , Till {1}".format(star,star_time)
 
-    if Su_Nakshatra:
-        star = star_list[Su_Nakshatra[0]-1]
-        NaksVal = star_list.index(star)
-        # print(NaksVal)
-        # print(star )
-        star_time1 = timedelta(hours=Su_Nakshatra[1][0],minutes=Su_Nakshatra[1][1], seconds=Su_Nakshatra[1][2])
-        star_time = str(star_time1)
+#    if Pr_Nakshatra:
+#        star = star_list[Pr_Nakshatra[0]-1]
+#        NaksVal = star_list.index(star)
+        # #print(NaksVal)
+        # #print(star )
+#        star_time1 = timedelta(hours=Pr_Nakshatra[1][0],minutes=Pr_Nakshatra[1][1], seconds=Pr_Nakshatra[1][2])
+#        #print("next star time")
+#        #print(star_time1)
+#        star_time = str(star_time1)
 
-    CuNaks = cal_current_naks(Cu_Nakshatram,Ne_Nakshatra)
+#    if '1 day' in star_time:
+#        star_time = star_time.replace('1 day', 'Next day')
+#    ## #print("Nakshatra :{0} , Till {1}".format(star,star_time))
+#    Pr_Nakshatram = "{0} , Till {1}".format(star,star_time)
 
-    if '1 day' in star_time:
-        star_time = star_time.replace('1 day', 'Next day')
-    ## print("Nakshatra :{0} , Till {1}".format(star,star_time))
-    Su_Nakshatram = "{0} , Till {1}".format(star,star_time)
+#    if Su_Nakshatra:
+#        star = star_list[Su_Nakshatra[0]-1]
+#        NaksVal = star_list.index(star)
+        # #print(NaksVal)
+        # #print(star )
+#        star_time1 = timedelta(hours=Su_Nakshatra[1][0],minutes=Su_Nakshatra[1][1], seconds=Su_Nakshatra[1][2])
+#        star_time = str(star_time1)
+
+#    CuNaks = cal_current_naks(Cu_Nakshatram,Ne_Nakshatra)
+
+#    if '1 day' in star_time:
+#        star_time = star_time.replace('1 day', 'Next day')
+    ## #print("Nakshatra :{0} , Till {1}".format(star,star_time))
+#    Su_Nakshatram = "{0} , Till {1}".format(star,star_time)
 
 
     #Yogam
@@ -450,12 +455,14 @@ def pancha(date, loc_lat, loc_lng, time, tz):
     if Yoga:
         yogam = yoga_list[Yoga[0]-1]
         yogaVal = yoga_list.index(yogam)
-        # print(yogaVal)
-        # print(yogam)
+        # #print(yogaVal)
+        # #print(yogam)
         yoga_time = timedelta(hours=Yoga[1][0],minutes=Yoga[1][1], seconds=Yoga[1][2])
         yoga_time = str(yoga_time)
         if '1 day' in yoga_time:
             yoga_time = yoga_time.replace('1 day', 'Next day')
+        #print('yoga time')
+        #print(yoga_time)
         Yogam = "{0} , Till {1}".format(yogam,yoga_time)
 
 
@@ -533,20 +540,20 @@ def pancha(date, loc_lat, loc_lng, time, tz):
     if durmu2==None:
         till = durmu1+day_durat
         durmu_today = "{0} till {1}".format(to_dt(durmu1), to_dt(till))
-        #print (durmu_today)
+        ##print (durmu_today)
     else:
         till1 = durmu1+day_durat
         till2 = durmu2+day_durat
         durmu_today = "{0} till {1}, and again from {2} till {3}".format(to_dt(durmu1), to_dt(till1), to_dt(durmu2), to_dt(till2))
-        #print (durmu_today)
+        ##print (durmu_today)
 
     def amrita_gadiyas(star_time1, Cu_Nakshatra, star_start_time):
         #amrita starts after x hours of starting time of nakshatra
         #stime of amrita/varj = start time of Nakshatra * x/24(duration of nakshatra)
         stime_of_star = delta_to_dec(star_time1)
-        ## print(star_time)
-        ## print(stime_of_star)
-        #print (star_start_time[Nakshatra[0]-1])
+        ## #print(star_time)
+        ## #print(stime_of_star)
+        ##print (star_start_time[Nakshatra[0]-1])
 
             #duration of amrita/varj = duration of nakshatra * 1.6/24
         return True
@@ -571,7 +578,7 @@ def pancha(date, loc_lat, loc_lng, time, tz):
             'Ritu': Ritu,
 #            'Hora':Hora,
             'Current_Nakshatra': Cu_Nakshatram,
-#            'Next_Nakshatra': Ne_Nakshatram,
+            'Next_Nakshatra': Ne_Nakshatram,
 #            'Sunrise_Nakshatra': Su_Nakshatram,
 #            'Pada' : Pada,
     #        'Rashi': Rashi,
@@ -592,7 +599,7 @@ def pancha(date, loc_lat, loc_lng, time, tz):
 #            'Gouri' : GC,
 #            'Day_Muhurthas': Muhurthas
     }
-    print(data2)
+    #print(data2)
     return (data2)
 
 Date = struct('Date', ['year', 'month', 'day'])
@@ -712,8 +719,8 @@ def local_time_to_jdut1(year, month, day, hour = 0, minutes = 0, seconds = 0, ti
   y, m, d, h, mnt, s = swe.utc_time_zone(year, month, day, hour, minutes, seconds, timezone)
   # BUG in pyswisseph: replace 0 by s
   jd_et, jd_ut1 = swe.utc_to_jd(y, m, d, h, mnt, 0, flag = swe.GREG_CAL)
-#  print("jd_utl")
-#  print(jd_utl)
+#  #print("jd_utl")
+#  #print(jd_utl)
   return jd_ut1
 
 def nakshatra_pada(longitude):
@@ -744,15 +751,15 @@ lunar_longitude = lambda jd: sidereal_longitude(jd, swe.MOON)
 def sunrise(jd, place):
   """Sunrise when centre of disc is at horizon for given date and place"""
   lat, lon, tz = place
-#  print('sunrise')
-#  print(jd)
+#  #print('sunrise')
+#  #print(jd)
 #  jd = 2459507.15
   result = swe.rise_trans(jd - tz/24, swe.SUN, lon, lat, rsmi = 0 + swe.CALC_RISE)
-#  print(result)
+#  #print(result)
   rise = result[1][0]  # julian-day number
-#  print("sunrise")
+#  #print("sunrise")
   # Convert to local time
-#  print([rise + tz/24., to_dms((rise - jd) * 24 + tz)])
+#  #print([rise + tz/24., to_dms((rise - jd) * 24 + tz)])
   return [rise + tz/24., to_dms((rise - jd) * 24 + tz)]
 
 def sunset(jd, place):
@@ -780,24 +787,24 @@ def hora(jd, place):
   jd1 = jd +1
   SR1 = sunrise(jd, place)
   SR2 = sunrise(jd1, place)
-#  print(SR1[1])
-#  print(SR1[0])
+#  #print(SR1[1])
+#  #print(SR1[0])
   jd_to_gregorian = lambda jd: swe.revjul(jd, swe.GREG_CAL)
   d1 = jd_to_gregorian(SR1[0])
   d2 = jd_to_gregorian(SR2[0])
   t1 = SR1[1]
   t2 = SR2[1]
   #    SRA = sunrise(date, location)[1]
-  #  print(SRA)
+  #  #print(SRA)
     #SR1 = sunrise(date, location)[0]
     #SRO = timedelta(hours=SRA[0],minutes=SRA[1],seconds=SRA[2])
-#  print(d1)
+#  #print(d1)
   val = vaara(jd)
   hl = vaara_lord[val]
-#  print(hl)
+#  #print(hl)
   v2 = hora_list.index(hl)
-#  print(v2)
-#  print(hora_list[v2])
+#  #print(v2)
+#  #print(hora_list[v2])
   date1 = "{0}-{1}-{2}".format(d1[0],d1[1],d1[2])
   time1 = "{0}:{1}:{2}".format(t1[0],t1[1],t1[2])
   date2 = "{0}-{1}-{2}".format(d2[0],d2[1],d2[2])
@@ -807,8 +814,8 @@ def hora(jd, place):
   datetime2 = date2 +" "+time2
   ts1 = pd.Timestamp(datetime1).timestamp()
   ts2 = pd.Timestamp(datetime2).timestamp()
-#  print(ts1)
-#  print(ts2)
+#  #print(ts1)
+#  #print(ts2)
   n = 24
   x = (ts2-ts1)/n
   for i in range(24):
@@ -822,19 +829,19 @@ def hora(jd, place):
      
 #     if t4 < tn < t3:
 #         Current_Hora = plantlist[val]+' From : '+str(t4)+' To : '+str(t3)
-         #print(plantlist[val]+' From : '+str(t4)+' To : '+str(t3))
+         ##print(plantlist[val]+' From : '+str(t4)+' To : '+str(t3))
 
      v2 = v2+1
      if v2 == len(hora_list):
          v2 = 0
 
-#  print(horalist)
-#    print(Current_Hora)
+#  #print(horalist)
+#    #print(Current_Hora)
   # 1. Find time of sunrise
 #  rise = sunrise(jd, place)[0] - tz / 24
   rise = sunrise(jd, place)[0]
-#  print(rise)
-#  print([rise + tz/24., to_dms((rise - jd) * 24 + tz)])
+#  #print(rise)
+#  #print([rise + tz/24., to_dms((rise - jd) * 24 + tz)])
 #  val = [rise + tz/24., to_dms((rise - jd) * 24 + tz)]
   
   return horalist
@@ -895,45 +902,126 @@ def nakshatra(jd, place):
      1 = Asvini, 2 = Bharani, ..., 27 = Revati
   """
   # 1. Find time of sunrise
-#  print(jd)
+#  #print(jd)
   lat, lon, tz = place
   rise = sunrise(jd, place)[0] - tz / 24.  # Sunrise at UT 00:00
-
+  #print(jd)
+  #print(rise)
+  #print(type(rise))
+  td = pd.Timestamp.now()
+  jtd = td.to_julian_date()
+  #print(jtd)
+  #print(type(jtd))
+  #print(td.to_julian_date())
+  #print(' NAKSHATRA CALCULATION START**********************')
+  #print(jd)
   offsets = [0.0, 0.25, 0.5, 0.75, 1.0]
   longitudes = [ lunar_longitude(rise + t) for t in offsets]
+  #print(longitudes[0])
+  #print(longitudes[1])
+  #print(longitudes[2])
+  #print(longitudes[3])
+  #print(longitudes[4])
 
   # 2. Today's nakshatra is when offset = 0
   # There are 27 Nakshatras spanning 360 degrees
   nak = ceil(longitudes[0] * 27 / 360)
+#  nak2 = ceil(longitudes[1] * 27 / 360)
+#  nak3 = ceil(longitudes[2] * 27 / 360)
+#  nak4 = ceil(longitudes[3] * 27 / 360)
+  nak5 = ceil(longitudes[4] * 27 / 360)
   # 3. Find end time by 5-point inverse Lagrange interpolation
   y = unwrap_angles(longitudes)
   x = offsets
   approx_end = inverse_lagrange(x, y, nak * 360 / 27)
+#  approx_end2 = inverse_lagrange(x, y, nak2 * 360 / 27)
+#  approx_end3 = inverse_lagrange(x, y, nak3 * 360 / 27)
+#  approx_end4 = inverse_lagrange(x, y, nak4 * 360 / 27)
+  approx_end5 = inverse_lagrange(x, y, nak5 * 360 / 27)
   ends = (rise - jd + approx_end) * 24 + tz
-#  print('Naks values')
-#  print(nak)
-#  print(to_dms(ends))
+#  ends2 = (rise - jd + approx_end2) * 24 + tz
+#  ends3 = (rise - jd + approx_end3) * 24 + tz
+#  ends4 = (rise - jd + approx_end4) * 24 + tz
+  ends5 = (rise - jd + approx_end5) * 24 + tz
+  #print(ends)
+#  #print(ends2)
+#  #print(ends3)
+#  #print(ends4)
+  #print(ends5)
+  #print('Naks values')
+  #print(nak)
+  #print(to_dms(ends))
   answer = [int(nak), to_dms(ends)]
-#  print(answer)
+  #print(answer)
+#  #print([int(nak2), to_dms(ends2)])
+#  #print([int(nak3), to_dms(ends3)])
+#  #print([int(nak4), to_dms(ends4)])
+  #print([int(nak5), to_dms(ends5)])
+  star = star_list[answer[0]-1]
+  NaksVal = star_list.index(star)
+  #print(NaksVal)
+  #print(star )
+  star_time1 = timedelta(hours=answer[1][0],minutes=answer[1][1], seconds=answer[1][2])
+  star_time = str(star_time1)
+  jd_to_gregorian = lambda jd: swe.revjul(jd, swe.GREG_CAL)
+  gregorian_to_jd_detail = lambda date: swe.julday(date.year, date.month, date.day, date.hour, date.minute)
+  ddate = jd_to_gregorian(jd)
+  ddaat = str(ddate[0])+"-"+str(ddate[1])+"-"+str(ddate[2])
+  date_str =  datetime.strptime(ddaat, '%Y-%m-%d')
+  #print('star time1')
+  #print(star_time1)
+  new_time = date_str + star_time1
+  val = new_time.strftime("%m/%d/%Y %H:%M:%S")
+  dtobj = datetime.strptime(val, '%m/%d/%Y %H:%M:%S')
+  val_detail = gregorian_to_jd_detail(datetime(dtobj.year, dtobj.month, dtobj.day, dtobj.hour, dtobj.minute, dtobj.second))       
+  #print('star time')
+  #print(val_detail)
+  #print(star_time)
+  #print([int(nak), val_detail])
+  if '1 day' in star_time:
+      #print('inside the star time 1 day*************************************************************')
+      #print(jd+1)
+      ddate = jd_to_gregorian(jd+1)
+      ddaat = str(ddate[0])+"-"+str(ddate[1])+"-"+str(ddate[2])
+      date_str =  datetime.strptime(ddaat, '%Y-%m-%d')
+      star_time = star_time.replace('1 day', 'Next day')
+      #print('star time1')
+      #print(star_time1)
+      new_time = date_str + star_time1
+      val = new_time.strftime("%m/%d/%Y %H:%M:%S")
+      dtobj = datetime.strptime(val, '%m/%d/%Y %H:%M:%S')
+      val_detail = gregorian_to_jd_detail(datetime(dtobj.year, dtobj.month, dtobj.day, dtobj.hour, dtobj.minute, dtobj.second))
+      #print('star time')
+      #print(val_detail)
+      #print(star_time)
+      #print([int(nak), val_detail])
+      #print('inside the star time 1 day*************************************************************') 
+  
+  #print("Nakshatra :{0} , Till {1}".format(star,val_detail))
+  Nakshatram = "Current Nakshatra : {0} , Till {1}".format(star,star_time)
+  #print(Nakshatram)
 
   # 4. Check for skipped nakshatra
+  
   nak_tmrw = ceil(longitudes[-1] * 27 / 360)
-#  print("nak_tmrw")
-#  print(nak_tmrw)
+#  #print("nak_tmrw")
+#  #print(nak_tmrw)
   isSkipped = (nak_tmrw - nak) % 27 > 1
   if isSkipped:
     leap_nak = nak + 1
     approx_end = inverse_lagrange(offsets, longitudes, leap_nak * 360 / 27)
     ends = (rise - jd + approx_end) * 24 + tz
-#    print('ends --- leap_nak')
+#    #print('ends --- leap_nak')
     leap_nak = 1 if nak == 27 else leap_nak
-#    print(leap_nak)
-#    print(ends)
+    #print('inside leap naks')
+#    #print(leap_nak)
+#    #print(ends)
     answer += [int(leap_nak), to_dms(ends)]
   
-#  print(' Nakshatra Answer')
-#  print(answer)
-#  print(type(answer))
+  #print(' Nakshatra Answer')
+  #print(answer)
+#  #print(type(answer))
+  #print(' NAKSHATRA CALCULATION END**********************')
   return answer
 
 
@@ -1000,8 +1088,8 @@ def karana(jd, place):
   lunar_long = lunar_longitude(rise)
   moon_phase = (lunar_long - solar_long) % 360
   today = ceil(moon_phase / 6)
-#  print("karana")
-#  print(moon_phase)
+#  #print("karana")
+#  #print(moon_phase)
   degrees_left = today * 6 - moon_phase
 
   return [int(today)]
@@ -1023,7 +1111,7 @@ def masa(jd, place):
   maasa = this_solar_month + 1
   if maasa > 12: maasa = (maasa % 12)
   val = samvatsara(jd, maasa)
-  print(val)
+  #print(val)
   return [int(maasa), is_leap_month]
 
 # epoch-midnight to given midnight
@@ -1034,10 +1122,10 @@ def elapsed_year(jd, maasa_num):
   ahar = ahargana(jd)  # or (jd + sunrise(jd, place)[0])
   kali = int((ahar + (4 - maasa_num) * 30) / sidereal_year)
   saka = kali - 3179
-#  print(saka)
+#  #print(saka)
   vikrama = saka + 135
-#  print(kali)
-#  print(vikrama)
+#  #print(kali)
+#  #print(vikrama)
   return kali, saka
 
 # New moon day: sun and moon have same longitude (0 degrees = 360 degrees difference)
@@ -1058,13 +1146,13 @@ def new_moon(jd, tithi_, opt = -1):
 
 def raasi(jd):
   """Zodiac of given jd. 1 = Mesha, ... 12 = Meena"""
-#  print("Raasi Date : ")
+#  #print("Raasi Date : ")
 
-#  print(jd)
+#  #print(jd)
   s = solar_longitude(jd)
   solar_nirayana = solar_longitude(jd)
   # 12 rasis occupy 360 degrees, so each one is 30 degrees
-#  print(ceil(solar_nirayana / 30.))
+#  #print(ceil(solar_nirayana / 30.))
   return ceil(solar_nirayana / 30.)
 
 def lunar_phase(jd):
@@ -1072,17 +1160,17 @@ def lunar_phase(jd):
   solar_long = solar_longitude(jd)
   lunar_long = lunar_longitude(jd)
   moon_phase = (lunar_long - solar_long) % 360
-#  print(moon_phase)
-#  print(type(moon_phase))
+#  #print(moon_phase)
+#  #print(type(moon_phase))
 
 #  if moon_phase < 0:
 #      thitinumber = math.ceil((moon_phase + 360) / 12)
 #  else:
 #      thitinumber = math.ceil((moon_phase) / 12)
 
-#  print(thithi[thitinumber])
-#  print('lunar phase')
-#  print(moon_phase)
+#  #print(thithi[thitinumber])
+#  #print('lunar phase')
+#  #print(moon_phase)
   return moon_phase
   
 def pakshaname(jd):
@@ -1090,24 +1178,24 @@ def pakshaname(jd):
   solar_long = solar_longitude(jd)
   lunar_long = lunar_longitude(jd)
   moon_phase = (lunar_long - solar_long) % 360
-  print(moon_phase)
-  print(type(moon_phase))
+  #print(moon_phase)
+  #print(type(moon_phase))
 
   if moon_phase < 0:
       thitinumber = math.ceil((moon_phase + 360) / 12)
   else:
       thitinumber = math.ceil((moon_phase) / 12)
 
-  print(thithi[thitinumber])
+  #print(thithi[thitinumber])
   return thithi[thitinumber]
-#  print('lunar phase')
-#  print(moon_phase)
+#  #print('lunar phase')
+#  #print(moon_phase)
 #  return moon_phase
 
 def cal_current_naks(Cu_Nakshatram, Ne_Nakshatra ):
-   print('****************************')
-   print(Cu_Nakshatram)
-   print(Ne_Nakshatra)
+   #print('****************************')
+   #print(Cu_Nakshatram)
+   #print(Ne_Nakshatra)
    return True
 
 def samvatsara(jd, maasa_num):
@@ -1116,7 +1204,7 @@ def samvatsara(jd, maasa_num):
   # See the function "get_Jovian_Year_name_south" in pancanga.pl
   if kali >= 4009:    kali = (kali - 14) % 60
   samvat = (kali + 27 + int((kali * 211 - 108) / 18000)) % 60
-  print(samvat)
+  #print(samvat)
   return samvat
 
 def ritu(masa_num):
@@ -1216,7 +1304,7 @@ def durmuhurtam(jd, place):
       # convert to local time
       start_times[i] = (start_times[i] - jd) * 24 + tz
       end_times[i] = (end_times[i] - jd) * 24 + tz
- # print(start_times, end_times)
+ # #print(start_times, end_times)
   return [start_times, end_times]  # in decimal hours
 
 def abhijit_muhurta(jd, place):
@@ -1226,20 +1314,20 @@ def abhijit_muhurta(jd, place):
   srise = swe.rise_trans(jd - tz/24, swe.SUN, lon, lat, rsmi = _rise_flags + swe.CALC_RISE)[1][0]
   sset = swe.rise_trans(jd - tz/24, swe.SUN, lon, lat, rsmi = _rise_flags + swe.CALC_SET)[1][0]
   day_dur = (sset - srise)
-  print(day_dur)
+  #print(day_dur)
   muhurt = day_dur/15
-  print(muhurt)
+  #print(muhurt)
   start = srise - 2*muhurt
   end = srise - muhurt
   bstart  = to_dms((start - jd)*24+tz)
   bend = to_dms((end - jd)*24+tz)
-  print(bstart)
-  print(bend)
+  #print(bstart)
+  #print(bend)
   start_time = srise + 7 / 15 * day_dur
   end_time = srise + 8 / 15 * day_dur
 
   # to local time
- # print([(start_time - jd) * 24 + tz, (end_time - jd) * 24 + tz])
+ # #print([(start_time - jd) * 24 + tz, (end_time - jd) * 24 + tz])
   return [to_dms((start_time - jd) * 24 + tz), to_dms((end_time - jd) * 24 + tz)]
 
 
@@ -1274,12 +1362,12 @@ def muhurthas(jd, place):
       night_muhurtha_list.append(night_muhurtha[y]+' From : '+str(to_dms(nmuh_start))+' To : '+str(to_dms(nmuh_end)))
       y = y+1
 
-#  print(day_muhurtha_list)
+#  #print(day_muhurtha_list)
 #  start_time = srise + 7 / 15 * day_dur
 #  end_time = srise + 8 / 15 * day_dur
 
   # to local time
- # print([(start_time - jd) * 24 + tz, (end_time - jd) * 24 + tz])
+ # #print([(start_time - jd) * 24 + tz, (end_time - jd) * 24 + tz])
   return [day_muhurtha_list, night_muhurtha_list]
 
 
@@ -1292,7 +1380,7 @@ def planetary_positions(jd, place):
      Also gives the nakshatra-pada division
    """
   jd_ut = jd - place.timezone / 24.
-#  print(jd_ut)
+#  #print(jd_ut)
 #  jd_ut = 2459481.35112
 
   positions = []
@@ -1307,13 +1395,13 @@ def planetary_positions(jd, place):
     # 0 = Mesha, 1 = Vrishabha, ..., 11 = Meena
     constellation = int(nirayana_long / 30)
     rashi = rashi_list[constellation]
-#    print(planet)
+#    #print(planet)
     plant = planetary_list[planet]
-#    print(plant)
+#    #print(plant)
     coordinates = to_dms(nirayana_long % 30)
     positions.append([planet, constellation, coordinates, nakshatra_pada(nirayana_long)])
     plan_positions.append([plant, rashi, coordinates, nakshatra_pada(nirayana_long)])
-#    print(plan_positions)
+#    #print(plan_positions)
   return plan_positions
 
 def sun_position(jd, place):
@@ -1323,7 +1411,7 @@ def sun_position(jd, place):
      Also gives the nakshatra-pada division
    """
   #jd_ut = jd - place.timezone / 24.
-#  print(jd_ut)
+#  #print(jd_ut)
 #  jd_ut = 2459481.35112
 
 #  positions = []
@@ -1338,13 +1426,13 @@ def sun_position(jd, place):
     # 0 = Mesha, 1 = Vrishabha, ..., 11 = Meena
   constellation = int(nirayana_long / 30)
   rashi = rashi_list[constellation]
-#    print(planet)
+#    #print(planet)
   plant = planetary_list[0]
-#    print(plant)
+#    #print(plant)
   coordinates = to_dms(nirayana_long % 30)
 #    positions.append([planet, constellation, coordinates, nakshatra_pada(nirayana_long)])
   sun_position.append([plant, rashi, coordinates, nakshatra_pada(nirayana_long)])
-#    print(plan_positions)
+#    #print(plan_positions)
   return sun_position
 
 
@@ -1355,7 +1443,7 @@ def moon_position(jd, place):
      Also gives the nakshatra-pada division
    """
   #jd_ut = jd - place.timezone / 24.
-#  print(jd_ut)
+#  #print(jd_ut)
 #  jd_ut = 2459481.35112
 
 #  positions = []
@@ -1370,13 +1458,13 @@ def moon_position(jd, place):
     # 0 = Mesha, 1 = Vrishabha, ..., 11 = Meena
   constellation = int(nirayana_long / 30)
   rashi = rashi_list[constellation]
-#    print(planet)
+#    #print(planet)
   plant = planetary_list[1]
-#    print(plant)
+#    #print(plant)
   coordinates = to_dms(nirayana_long % 30)
 #    positions.append([planet, constellation, coordinates, nakshatra_pada(nirayana_long)])
   sun_position.append([plant, rashi, coordinates, nakshatra_pada(nirayana_long)])
-#    print(plan_positions)
+#    #print(plan_positions)
   return sun_position
 
 
@@ -1384,29 +1472,29 @@ def moon_position(jd, place):
 def ascendant(jd, place):
   """Lagna (=ascendant) calculation at any given time & place"""
   lat, lon, tz = place
-#  print("**********************")
-#  print(lat)
-#  print(lon)
-#  print(tz)
-#  print(jd)
+#  #print("**********************")
+#  #print(lat)
+#  #print(lon)
+#  #print(tz)
+#  #print(jd)
   jd_utc = jd - (tz / 24.)
 #  jd_utc = 2459505.415
 #  jd_utc = 2459492.1187500
   set_ayanamsa_mode() # needed for swe.houses_ex()
-#  print(jd_utc)
+#  #print(jd_utc)
   # returns two arrays, cusps and ascmc, where ascmc[0] = Ascendant
   nirayana_lagna = swe.houses_ex(jd_utc, lat, lon, flag = swe.FLG_SIDEREAL)[1][0]
-#  print(nirayana_lagna)
+#  #print(nirayana_lagna)
   # 12 zodiac signs span 360°, so each one takes 30°
   # 0 = Mesha, 1 = Vrishabha, ..., 11 = Meena
   constellation = int(nirayana_lagna / 30)
 #  rashiindex = constellation+1
   rashi = rashi_list[constellation]
-#  print(rashi)
+#  #print(rashi)
   coordinates = to_dms(nirayana_lagna % 30)
 
   reset_ayanamsa_mode()
-#  print ([rashi, coordinates, nakshatra_pada(nirayana_lagna)])
+#  #print ([rashi, coordinates, nakshatra_pada(nirayana_lagna)])
   return [rashi, coordinates, nakshatra_pada(nirayana_lagna)]
 
 # http://www.oocities.org/talk2astrologer/LearnAstrology/Details/Navamsa.html
@@ -1435,9 +1523,5 @@ def navamsa(jd, place):
     positions.append([planet, navamsa_from_long(nirayana_long)])
 
   return positions
-
-
-
-
 
 #app.run()
