@@ -232,12 +232,13 @@ def pancha(date, loc_lat, loc_lng, time, tz):
         return night_dura, night_dura_formated
 
 
-    dt = datetime.now()
+#    dt = datetime.now()
     ##print (dt)
-    tz_now = pytz.timezone(tz)
+#    tz_now = pytz.timezone(tz)
     #print(tz_now)
-    tz = tz_now.utcoffset(dt).total_seconds()/60/60
+#    tz = tz_now.utcoffset(dt).total_seconds()/60/60
     #print(tz)
+    tz = int(tz)/60
     location = Place(lat, lon, tz)
 #    #print(location)
     Vaara = vaara(date)
